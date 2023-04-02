@@ -1,0 +1,6 @@
+*.css
+*.svg
+webpack.config.js
+postcss.config.js
+tsconfig.json
+.eslintrc.js

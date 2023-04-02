@@ -1,0 +1,5 @@
+*.css
+*.svg
+webpack.config.js
+tsconfig.json
+.eslintrc.js
