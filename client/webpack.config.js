@@ -2,15 +2,20 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+
+const PATHS = {
+    app: './src/index.tsx',
+    dist: path.join(__dirname, '../build')
+  };
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: PATHS.app,
     output: {
-        path: path.join(__dirname, '../public'),
-        chunkFilename: '[id].[chunkhash].js',
-        filename: '[name].js',
+        path: PATHS.dist,
+        chunkFilename: '[name].chunk.js',
+        filename: 'index.js',
         clean: true,
     },
     resolve: {
@@ -23,7 +28,6 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     { loader: 'babel-loader', options: { babelrc: true }},
-                    // { loader: 'ts-loader', options: { configFile: 'tsconfig.json' } },
                 ]
             },
             {
@@ -38,26 +42,15 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.s[ac]ss$/i,
-                exclude: /node_modules/,
-                use: [
-                  MiniCssExtractPlugin.loader,
-                  "css-loader",
-                  "postcss-loader",
-                  "sass-loader",
-                ],
-              },
         ]
     },
     optimization: {
         minimizer: [
-          new TerserPlugin({parallel: true}),
-          new CssMinimizerPlugin(),
+          new TerserPlugin({ parallel: true }),
         ],
       },
     plugins: [
-        new MiniCssExtractPlugin(),
+        new ForkTsCheckerWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html'
         }),

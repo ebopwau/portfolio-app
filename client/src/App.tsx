@@ -1,18 +1,9 @@
-import React, { FC, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-import styles from './App.module.scss';
+import { MainRouter } from 'routes';
 
-export const App: FC = () => {
-  useEffect(() => {
-    axios.get('/api').then(({ data }) => {
-      console.log(data);
-    });
-  }, []);
+const App = () => (
+  <MainRouter />
+);
 
-  return (
-    <div className={styles.app}>
-      App! app
-    </div>
-  );
-};
+export default App;

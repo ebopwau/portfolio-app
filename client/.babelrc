@@ -1,17 +1,17 @@
 {
   "presets": [
     "@babel/react",
-    "@babel/preset-typescript",
+    ["@babel/preset-typescript", { "isTSX": true, "allExtensions": true }],
     ["@babel/env", { "modules": "auto" }]
   ],
   "plugins": [
     [
       "module-resolver",
       {
-        "extensions": [".ts", ".tsx", ".js", ".jsx"],
+        "extensions": [".ts", ".tsx"],
         "root": ["./src"],
         "alias": {
-          "root": "",
+          "root": ".",
           "src": "/src"
         }
       }
