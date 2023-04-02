@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[956],{956:function(e,r,n){n.r(r),n.d(r,{View:function(){return u}});var t=n(294),u=function(){return t.createElement("div",{id:"error-page"},t.createElement("h1",null,"Oops!"),t.createElement("p",null,"Sorry, an unexpected error has occurred."))}}}]);
