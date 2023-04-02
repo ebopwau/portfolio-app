@@ -10,7 +10,7 @@ export const View: FC = () => {
 
   return (
     <div>
-      App!
+      App2!
     </div>
   );
 };
